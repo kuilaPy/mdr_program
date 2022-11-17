@@ -1,0 +1,6 @@
+<h1>creat a new store</h1>
+<%=form_for(@store,:url=>store_path) do |f|%>
+<%=render(:partial =>'form',:locals=>{:f=>f})%>
+
+<%= f.submit "update Store",class:"btn button", type:"submit"%>
+<%end%>

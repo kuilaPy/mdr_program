@@ -1,0 +1,55 @@
+
+<div><%=@store.store_name %></div>
+<div><%= @store.store_address %></div>
+<div><%= @store.store_phone_number%></div>
+<div><%= @store.owner_name%></div>
+<div><%= @store.store_owner_phone_number%></div>
+<div><%= @store.email%></div>
+<div><%= @store.gst_no%></div>
+<div><%= @store.pan_no%></div>
+<div><%= @store.pan_card%></div>
+<div><%= @store.trade_licence%></div>    
+
+
+<div>
+<h2>Store Mdr</h2>
+<table>
+  <tr class="header">
+    <th scope="col" class="col">Payment Mode</th>
+    <th scope="col" class="col">Rate Amount</th>
+    <th scope="col" class="col">Rate Type</th>
+    <th scope="col"class="col">UpTo Amount</th>
+    <th scope="col" class="col">From Amount</th>  
+  </tr>
+  <% @store_mdrs.each do |store_mdr| %>
+      <tr>
+        
+        <td scope="row"><%=store_mdr.payment_mode%></td>
+        <td scope="row"><%=store_mdr.rate_amount%></td>
+        <td scope="row"><%=store_mdr.rate_type%></td>
+        <td scope="row"><%=store_mdr.upto_amount%></td>
+        <td scope="row"><%=store_mdr.from_amount%></td>
+      </tr>
+  <%end%>
+</table>
+</div>
+
+<div>
+<h2>Store TID & DSN</h2>
+<table>
+<tr>
+<th>TID</th>
+<th>DSN</th>
+<th>Remakrs</th>
+<th>Status</th>
+</tr>
+  <% @terminals.each do |terminal| %>
+    <tr>
+    <td ><%=terminal.tid%></td>
+    <td><%=terminal.device_id%></td>
+    <td><%=terminal.remarks%></td>
+    <td><%=terminal.status%></td>
+    </tr>
+  <%end%>
+</table>
+</div>

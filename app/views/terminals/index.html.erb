@@ -1,0 +1,33 @@
+<h1>Configure Store Terminals(TID)</h1>
+<div>
+<h3>New Terminal</h3>
+<%=form_for(@terminal,:url=> store_terminals_path,:method => 'post') do |f|%>
+    <%= f.text_field :tid , placeholder: "TID" %>
+    <%= f.select :device_id,Device.all.pluck(:serial_no,:id),{prompt:'select'},{class: "form-control"}%>
+    <%= f.text_field :remarks, placeholder: "Remakrs"%>
+    <%= f.select :status, ["Active ", "Inactive"]  %>
+    <%= f.submit %>
+ <%end%>
+
+</div>
+
+<hr>
+
+<div>
+ <table>
+    <tr>
+        <th>TID</th>
+        <th>DSN</th>
+        <th>Remakrs</th>
+        <th>Status</th>
+    </tr>
+    <% @terminals.each do |terminal| %>
+         <tr>
+          <td ><%=terminal.tid%></td>
+          <td><%=terminal.device_id%></td>
+          <td><%=terminal.remarks%></td>
+          <td><%=terminal.status%></td>
+      </tr>
+    <%end%>   
+ </table>
+</div>
