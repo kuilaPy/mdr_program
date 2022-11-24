@@ -1,37 +1,41 @@
-<h2>Configure Store Devices</h2>
-
-<h3>New Device</h3>
+<p class="heading_1">Configure Store Devices</p>
+<div class="container">
+<p class="heading">New Device</p3>
+<table style="width:100%">
 <%=form_for(@device,:url=>devices_path,:method => 'post') do |f|%>
-    <%= f.text_field :serial_no , placeholder: "Device Serial No" %>
-    <%= f.text_field :remarks, placeholder: "Remarks"%>
-    <%= f.select :status, ["Active ", "Inactive"]  %>
-    <%= f.submit %>
+    <tr>
+    <td><%= f.text_field :serial_no , placeholder: "Device Serial No" %></td>
+    <td><%= f.text_field :remarks, placeholder: "Remarks"%></td>
+    <td><%= f.select :status, ["Active ", "Inactive"]  %></td>
+    <td><%= f.submit %></td>
+    </tr>
 <% end %>
+</table>
 </div>
-
-
-<div>
-<h3>Store Devces</h3>
-<div>
-<table>
+<div class= "container">
+<p class="heading"> All Devices</p>
+<table class="table table-bordered">
  <tr>
      <th>Device No</th>
      <th>Device Serial NO</th>
      <th>Remakrs</th>
      <th>Status</th>
+     <th>Action</th>
  </tr>
- <%= @devices.each do |device| %>
+ <% @devices.each do |device| %>
  <tr>
  <td ><%=device.id%></td>
  <td><%=device.serial_no%></td>
  <td><%=device.remarks%></td>
  <td><%=device.status%></td>
- 
- 
+ <td>
+     <%=link_to image_tag("/assets/edit_icon_4.png", border: 0,size:"20x20",class:"back-icon"),edit_device_path(device.id)%>
 
+      <%=link_to image_tag("/assets/delete_icon.png", border: 0,size:"20x20",class:"back-icon"),device_path(device.id), :method => :delete %>
+</td>
  </tr>
  <%end%>
  </table>
-</div>
+
 
 </div>

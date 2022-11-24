@@ -1,6 +1,10 @@
-<h1>creat a new store</h1>
+
+<p class="heading_1">Edit Store</p>
+<div class="container" >
 <%=form_for(@store,:url=>store_path) do |f|%>
 <%=render(:partial =>'form',:locals=>{:f=>f})%>
 
-<%= f.submit "update Store",class:"btn button", type:"submit"%>
+<%= f.submit "update Store",class:"btn button", type:"submit" %>
 <%end%>
+<%= link_to "back", store_path%>
+</div>

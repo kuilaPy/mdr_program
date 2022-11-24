@@ -9,15 +9,19 @@ class CreateStores < ActiveRecord::Migration[5.2]
       t.string  :owner_name, require: true
       t.string  :store_owner_phone_number
       t.string  :email
-      t.integer :gst_no
+      t.string  :gst_no
       t.binary  :gst_certificate
       t.string  :pan_no
       t.binary  :pan_card
-      t.string  :trade_licence
-      t.binary  :trade_licence_certificate
-      t.string  :Bank_details
+      t.string  :trade_license
+      t.binary  :trade_license_certificate
+      t.string  :bank_name
+      t.integer :account_no
+      t.string  :ifsc_code
+      t.string  :bank_branch_address
       t.binary  :uploading_of_cancelled_cheque
       t.string  :dealer_name
+      t.string  :dealer_sales_person
       t.binary  :store_acquisition_form
 
       t.timestamps

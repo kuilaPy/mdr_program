@@ -1,6 +1,4 @@
-# frozen_string_literal: true
-
 class Terminal < ApplicationRecord
-  belongs_to :store
-  belongs_to :device
+    has_one  :store_terminal, dependent: :destroy
+    validates :tid, uniqueness: true
 end

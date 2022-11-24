@@ -1,0 +1,9 @@
+<h1>Terminals edit</h1>
+
+<%=form_for(@terminal,:url=> terminal_path) do |f|%>
+    <%= f.text_field :tid , placeholder: "TID" %>
+    <%= f.select :device_id,Device.all.pluck(:serial_no,:id),{prompt:'select'},{class: "form-control"}%>
+    <%= f.text_field :remarks, placeholder: "Remakrs"%>
+    <%= f.select :status, ["Active ", "Inactive"]  %>
+    <%= f.submit %>
+ <%end%>

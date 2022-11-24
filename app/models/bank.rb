@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
 class Bank < ApplicationRecord
-  has_many :bank_mdrs
-  has_one :store
+  has_many :bank_mdrs , dependent: :destroy
+  has_one :store , dependent: :destroy
 end

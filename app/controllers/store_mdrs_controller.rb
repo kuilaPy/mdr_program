@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class StoreMdrsController < ApplicationController
+  layout 'store'
   before_action :set_store
   def index
+    @store_mdr = @store.store_mdrs.new
     @store_mdrs = @store.store_mdrs
   end
 
@@ -16,7 +18,7 @@ class StoreMdrsController < ApplicationController
 
     if @store_mdr.save
       flash[:notice] = 'Store_mdr save successfully'
-      redirect_to(new_store_store_mdr_path)
+      redirect_to(store_store_mdrs_path)
     else
 
       render('new')
@@ -24,10 +26,21 @@ class StoreMdrsController < ApplicationController
   end
 
   def edit
+    @store_mdr = @store.store_mdrs.find(params[:id])
   end
 
-  def destroy
+  def update
+    @store_mdr = @store.store_mdrs.find(params[:id])
+
+    if @store_mdr.update_attributes(store_mdr_params)
+      flash[:notice] = 'Store_mdr updated successfully'
+      redirect_to(store_path(@store.id))
+    else
+      render('edit')
+    end
   end
+
+  def destroy; end
 
   private
 

@@ -1,11 +1,14 @@
 
-<h1>creat a new store</h1>
+
 <% if @store.errors.any? %>
   <%= @store.errors.full_messages %>
 <% end %>
-<%=form_for(@store,:url=>stores_path,:method => 'post') do |f|%>
-<%=render(:partial =>'form',:locals=>{:f=>f})%>
-<%= f.select :bank_id,Bank.all.pluck(:bank_name,:id),{prompt:'select'},{class: "form-control"}%>
+<div class="container" >
+  <p class="heading">Create New Store</p>
+  <%=form_for(@store,:url=>stores_path,:method => 'post') do |f|%>
+    <%=render(:partial =>'form',:locals=>{:f=>f})%>
+    <%= f.submit "Next",class:"btn button", type:"submit", id:"sudmit_btn"%> 
+  <%end%>
+  <a class="btn btn-primary" href="/stores" role="button">Back</a>
+</div>
 
-<%= f.submit "Next",class:"btn button", type:"submit"%>
-<%end%>

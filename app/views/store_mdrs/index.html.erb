@@ -1,0 +1,53 @@
+<p class="heading_1">Configure <%=@store.store_name%> MDRs</p>
+ <div class="container">
+  <div class="row">
+  <p class="heading">Add New MDR</p>
+  <%=form_for(@store_mdr,:url=> store_store_mdrs_path,:method => 'post') do |f|%>
+  <table style="width:100%">
+  <tr>
+  <th>Payment Mode</th>
+  <th>Rate Amount</th>
+  <th>Rate Type</th>
+  <th>UpTO Amount</th>
+  <th>From Amount</th>
+  </tr>
+  <tr>
+    <td><%= f.select :payment_mode, ["Credit Card ", "Debit Card", "Rupay Card","UPI","Commercial / International Card","Amex Card","Any other","Rent"]  %></td>
+    <td><%= f.number_field :rate_amount , step: :"0.01" ,placeholder: "Rate Amount" , class:"input_number"%></td>
+    <td> <%= f.select :rate_type, ["Percentage ", "Fixed"],class:"input_number"  %></td>
+    <td><%= f.text_field :upto_amount, placeholder: "UpTo Amount"%></td>
+    <td><%= f.text_field :from_amount , placeholder: "From Amount"%></td>
+    <td> <%= f.submit "save"  %></td>
+  </tr>
+  </table>
+    
+  <% end %>
+  </div>
+  <hr>
+</div>
+<div class= "container">
+ <table class="table table-bordered">
+ <p class="heading">All MDRs</p>
+ <tr>
+     <th scope="col">Payment Mode </th>
+     <th scope="col">Rate Amount</th>
+     <th scope="col">Rate Type</th>
+     <th scope="col">Upto Amount</th>
+     <th scope="col">From Amount</th>  
+ </tr>
+ <% @store_mdrs.each do |store_mdr| %>
+ <tr>
+ <td ><%=store_mdr.payment_mode%></td> 
+ <td><%=store_mdr.rate_amount%></td>
+ <td><%=store_mdr.rate_type%></td>
+ <td><%=store_mdr.upto_amount%></td>
+ <td><%=store_mdr.from_amount%></td>
+
+ </tr>
+ <%end%>
+
+</table>
+<%= link_to "Back", new_store_path ,class:""%>
+<%= link_to "NEXT", store_store_terminals_path ,class:"next_btn"%>
+</div>
+

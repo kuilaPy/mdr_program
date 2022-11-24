@@ -1,0 +1,46 @@
+<p class="heading_1">Configure <%=@store.store_name%> Terminals(TID) & Device Serial No(DSN)</p>
+<div class="container">
+  <div class="row">
+<p class="heading"></p>
+<table style="width:100%">
+<%=form_for(@store_terminal,:url=> store_store_terminals_path,:method => 'post') do |f|%>
+  <tr>
+  <th>terminal Id(TID)</th>
+  <th>Choose DSN</th>
+  <th>Remarks</th>
+  <th>Status</th>
+  
+  </tr>
+    <tr>
+    <td><%= f.select :terminal_id,Terminal.all.pluck(:tid,:id),{prompt:'select'},{class: "form-control"}%></td>
+     <td><%= f.select :device_id,Device.all.pluck(:serial_no,:id),{prompt:'select'},{class: "form-control"}%></td>
+     <td><%= f.text_field :remarks, placeholder: "Remakrs"%></td>
+     <td><%= f.select :status, ["Active ", "Inactive"]  %></td>
+     <td><%= f.submit "Save" %></td>
+    </tr>
+ <%end%>
+</table>
+</div>
+</div>
+<div class= "container">
+ <table class="table table-bordered">
+    <tr>
+        <th>TID</th>
+        <th>DSN</th>
+        <th>Remakrs</th>
+        <th>Status</th>
+    </tr>
+    <% @store_terminals.each do |store_terminal| %>
+         <tr>
+          <td ><%=store_terminal.terminal_id%></td>
+          <td><%=store_terminal.device_id%></td>
+          <td><%=store_terminal.remarks%></td>
+          <td><%=store_terminal.status%></td>
+      </tr>
+    <%end%>   
+ </table>
+ <%= link_to "Back", new_store_store_mdr_path%>
+<%= link_to "Finish", stores_path,class:"next_btn" %>
+</div>
+
+

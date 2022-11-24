@@ -64,3 +64,5 @@ end
 gem 'devise'
 gem 'rubocop', '~> 1.39', require: false
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+
+gem 'bootstrap', '~> 5.2'

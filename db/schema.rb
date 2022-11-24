@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_17_110729) do
+ActiveRecord::Schema.define(version: 2022_11_24_084510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bank_mdrs", force: :cascade do |t|
     t.string "payment_mode"
-    t.integer "rate_amount"
+    t.float "rate_amount"
     t.string "rate_type"
     t.integer "upto_amount"
     t.integer "from_amount"
@@ -29,11 +29,11 @@ ActiveRecord::Schema.define(version: 2022_11_17_110729) do
 
   create_table "banks", force: :cascade do |t|
     t.string "bank_name"
+    t.integer "account_no"
+    t.string "ifsc_code"
     t.string "branch_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "store_id"
-    t.index ["store_id"], name: "index_banks_on_store_id"
   end
 
   create_table "devices", force: :cascade do |t|
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2022_11_17_110729) do
 
   create_table "store_mdrs", force: :cascade do |t|
     t.string "payment_mode"
-    t.integer "rate_amount"
+    t.float "rate_amount"
     t.string "rate_type"
     t.integer "upto_amount"
     t.integer "from_amount"
@@ -56,6 +56,19 @@ ActiveRecord::Schema.define(version: 2022_11_17_110729) do
     t.index ["store_id"], name: "index_store_mdrs_on_store_id"
   end
 
+  create_table "store_terminals", force: :cascade do |t|
+    t.string "remarks"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "store_id"
+    t.bigint "device_id"
+    t.bigint "terminal_id"
+    t.index ["device_id"], name: "index_store_terminals_on_device_id"
+    t.index ["store_id"], name: "index_store_terminals_on_store_id"
+    t.index ["terminal_id"], name: "index_store_terminals_on_terminal_id"
+  end
+
   create_table "stores", force: :cascade do |t|
     t.string "store_name", limit: 100
     t.string "store_address"
@@ -63,15 +76,19 @@ ActiveRecord::Schema.define(version: 2022_11_17_110729) do
     t.string "owner_name"
     t.string "store_owner_phone_number"
     t.string "email"
-    t.integer "gst_no"
+    t.string "gst_no"
     t.binary "gst_certificate"
     t.string "pan_no"
     t.binary "pan_card"
-    t.string "trade_licence"
-    t.binary "trade_licence_certificate"
-    t.string "Bank_details"
+    t.string "trade_license"
+    t.binary "trade_license_certificate"
+    t.string "bank_name"
+    t.integer "account_no"
+    t.string "ifsc_code"
+    t.string "bank_branch_address"
     t.binary "uploading_of_cancelled_cheque"
     t.string "dealer_name"
+    t.string "dealer_sales_person"
     t.binary "store_acquisition_form"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -85,10 +102,6 @@ ActiveRecord::Schema.define(version: 2022_11_17_110729) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "store_id"
-    t.bigint "device_id"
-    t.index ["device_id"], name: "index_terminals_on_device_id"
-    t.index ["store_id"], name: "index_terminals_on_store_id"
   end
 
   create_table "transactions", force: :cascade do |t|
@@ -136,9 +149,9 @@ ActiveRecord::Schema.define(version: 2022_11_17_110729) do
   end
 
   add_foreign_key "bank_mdrs", "banks"
-  add_foreign_key "banks", "stores"
   add_foreign_key "store_mdrs", "stores"
+  add_foreign_key "store_terminals", "devices"
+  add_foreign_key "store_terminals", "stores"
+  add_foreign_key "store_terminals", "terminals"
   add_foreign_key "stores", "banks"
-  add_foreign_key "terminals", "devices"
-  add_foreign_key "terminals", "stores"
 end

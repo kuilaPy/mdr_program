@@ -1,68 +1,90 @@
 
+<div class="row">
+<div class="col">
 <table>
-  <tr>
-    <th >STORE NAME &nbsp;&nbsp;</th>
+  <tr class="table_row_style">
+    <th >STORE NAME* </th>
     <td><%= f.text_field :store_name%></td>
-    <th>store_address&nbsp;&nbsp;</th>
-    <td><%= f.text_field :store_address%></td>
+    <th class="table_head">STORE ADDRESS*</th>
+    <td class="table_head"><%= f.text_field :store_address%></td>
   </tr>
   
   <tr>
-    <th >store_phone_number&nbsp;&nbsp;</th>
-    <td><%= f.telephone_field :store_phone_number%></td>
-    <th>owner_name&nbsp;&nbsp;</th>
-    <td><%= f.text_field :owner_name%></td>
-  </tr>
-
-  <tr>
-    <th >store_owner_phone_number &nbsp;&nbsp;</th>
-    <td><%= f.telephone_field:store_owner_phone_number%></td>
-    <th>store_address&nbsp;&nbsp;</th>
-    <td><%= f.text_field :store_address%></td>
-  </tr>
-
-  <tr>
-    <th >email &nbsp;&nbsp;</th>
-    <td><%= f.text_field :email%></td>
-    <th>gst_no&nbsp;&nbsp;</th>
-    <td><%= f.text_field :gst_no%></td>
-  </tr>
-
-  <tr>
-    <th >gst_no_certificate &nbsp;&nbsp;</th>
-    <td><%= f.file_field :store_name%></td>
-    <th>pan_no;&nbsp;</th>
-    <td><%= f.text_field :pan_no%></td>
-  </tr>
-
-
-  <tr>
-    <th >pan_card &nbsp;&nbsp;</th>
-    <td><%= f.file_field :store_name%></td>
-    <th>trade_licence;&nbsp;</th>
-    <td><%= f.text_field :trade_licence%></td>
-  </tr>
-
-  <tr>
-    <th >trade_licence_certificate &nbsp;&nbsp;</th>
-    <td><%= f.file_field :store_name%></td>
-    <th>Bank_details;&nbsp;</th>
-    <td><%= f.text_field :Bank_details%></td>
-  </tr>
-
-
-  <tr>
-    <th >uploading_of_cancelled_cheque &nbsp;&nbsp;</th>
-    <td><%= f.file_field :uploading_of_cancelled_cheque%></td>
-    <th>dealer_name;&nbsp;</th>
-    <td><%= f.text_field :dealer_name %></td>
-  </tr>
-
-
-  <tr>
-    <th >store_acquisition_form &nbsp;&nbsp;</th>
-    <td><%= f.file_field :store_acquisition_form%></td>
+    <th >STORE PHONE NUMBER</th>
+    <td><%= f.text_field  :store_phone_number%></td>
+    <th class="table_head">EMAIL ID</th>
+    <td class="table_head"><%= f.text_field :email%></td>
+    </tr>
     
+    <tr>
+    <th >OWNER NAME*</th>
+    <td><%= f.text_field :owner_name%></td>
+    <th class="table_head" >STORE OWNER PHONE NUMBER*</th>
+    <td class="table_head"><%= f.text_field:store_owner_phone_number%></td>
+    </tr>
+    
+  <tr>
+  <th>GST NO</th>
+  <td><%= f.text_field :gst_no%></td>
+  <th class="table_head">GST CERTIFICATE </th>
+  <td class="table_head"><%= f.file_field :gst_certificate%></td>
+  </tr>
+  
+  <tr>
+    <th>PAN NO*</th>
+    <td><%= f.text_field :pan_no%></td>
+    <th class="table_head">UPLOAD PAN CARD*</th>
+    <td class="table_head"><%= f.file_field :pan_card%></td>
+  </tr>
+
+
+  <tr>
+    <th>TRADE LICENSE</th>
+    <td><%= f.text_field :trade_license%></td>
+    <th class="table_head">UPLOAD TRADE LICENSE CERTIFICATE</th>
+    <td class="table_head"><%= f.file_field :trade_license_certificate%></td>
+  </tr>
+  <tr>
+      <th >CHOOSE BANK*</th>
+      <td ><%= f.select :bank_id,Bank.all.pluck(:bank_name,:id),{prompt:'select'},{class: "form-control"}%></td>
+      <th class="table_head">UPLOAD STORE ACQUISITION FORM *</th>
+      <td class="table_head"><%= f.file_field :store_acquisition_form%></td>
+  
+  </tr>
+
+  
+  
+  <tr>
+  <th>DEALER NAME</th>
+  <td><%= f.text_field :dealer_name %></td>
+  <th class="table_head">DEALER SALES PERSON</th>
+      <td class="table_head"><%= f.text_field :dealer_sales_person%></td>
+  </tr>
+      
+      
+      
+  
+  <tr class="table_row_style">
+    <th>BANK NAME*</th>
+    <td><%= f.text_field :bank_name%></td>
+    <th class="table_head">BANK BRANCH ADDRESS</th>
+    <td class="table_head"><%= f.text_field :bank_branch_address%></td> 
+  </tr>
+  <tr>
+   <th>ACCOUNT NO*</th>
+   <td><%= f.text_field :account_no%></td>
+   <th class="table_head">IFSC CODE*</th>
+   <td class="table_head"><%= f.text_field :ifsc_code%></td>
+   </tr>
+  <tr>
+   <th></th>
+   <td></td>
+   <th class="table_head" >UPLOAD CANCELLED CHEQUE* </th>
+    <td class="table_head"><%= f.file_field :uploading_of_cancelled_cheque%></td>
   </tr>
   </table>
+  </div>
+  </div>
   
+
+ 

@@ -11,8 +11,12 @@ Rails.application.routes.draw do
 
   resources :stores do
     resources :store_mdrs
-    resources :terminals
+    resources :store_terminals
   end
 
   resources :devices
+  resources :terminals
+  resources :banks do
+    resources :bank_mdrs
+  end
 end

@@ -1,33 +1,42 @@
-<h1>Configure Store Terminals(TID)</h1>
-<div>
-<h3>New Terminal</h3>
-<%=form_for(@terminal,:url=> store_terminals_path,:method => 'post') do |f|%>
-    <%= f.text_field :tid , placeholder: "TID" %>
-    <%= f.select :device_id,Device.all.pluck(:serial_no,:id),{prompt:'select'},{class: "form-control"}%>
-    <%= f.text_field :remarks, placeholder: "Remakrs"%>
-    <%= f.select :status, ["Active ", "Inactive"]  %>
-    <%= f.submit %>
- <%end%>
 
-</div>
-
-<hr>
-
-<div>
- <table>
+<p class="heading_1">Configure Store Terminals</p>
+<div class="container">
+<p class="heading">New Terminal</p3>
+<table style="width:100%">
+<%=form_for(@terminal,:url=>terminals_path,:method => 'post') do |f|%>
     <tr>
-        <th>TID</th>
-        <th>DSN</th>
-        <th>Remakrs</th>
-        <th>Status</th>
+    <td><%= f.text_field :tid , placeholder: "terminal Serial No" %></td>
+    <td><%= f.text_field :remarks, placeholder: "Remarks"%></td>
+    <td><%= f.select :status, ["Active ", "Inactive"]  %></td>
+    <td><%= f.submit %></td>
     </tr>
-    <% @terminals.each do |terminal| %>
-         <tr>
-          <td ><%=terminal.tid%></td>
-          <td><%=terminal.device_id%></td>
-          <td><%=terminal.remarks%></td>
-          <td><%=terminal.status%></td>
-      </tr>
-    <%end%>   
+<% end %>
+</table>
+</div>
+<div class= "container">
+<p class="heading"> All terminals</p>
+<table class="table table-bordered">
+ <tr>
+     <th>Terminal No</th>
+     <th>Tid</th>
+     <th>Remakrs</th>
+     <th>Status</th>
+     <th>Action</th>
+ </tr>
+ <% @terminals.each do |terminal| %>
+ <tr>
+ <td ><%=terminal.id%></td>
+ <td><%=terminal.tid%></td>
+ <td><%=terminal.remarks%></td>
+ <td><%=terminal.status%></td>
+ <td>
+     <%=link_to image_tag("/assets/edit_icon_4.png", border: 0,size:"20x20",class:"back-icon"),edit_terminal_path(terminal.id)%>
+
+      <%=link_to image_tag("/assets/delete_icon.png", border: 0,size:"20x20",class:"back-icon"),terminal_path(terminal.id), :method => :delete %>
+</td>
+ </tr>
+ <%end%>
  </table>
+
+
 </div>

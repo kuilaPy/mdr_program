@@ -1,0 +1,36 @@
+
+<div class="container">
+<p class="heading">Add new Banks</p3>
+<table style="width:100%">
+<%=form_for(@bank,:url=>banks_path,:method => 'post') do |f|%>
+    <td><%= f.text_field :bank_name , placeholder: "Bank Name" %></td>
+    <td><%= f.text_field :branch_address, placeholder: "Branch Address"%></td>
+    <td><%= f.submit %></td> 
+<% end %>
+</table>
+</div>
+<div class= "container">
+<p class="heading">All Banks</p>
+<table class="table table-bordered">
+<tr>
+    <th>Bank ID</th>
+    <th>Bank Name</th>
+    <th>Address</th>
+    <th>Action</th>
+    
+</tr>
+<% @banks.each do |bank| %>
+<tr>
+<td ><%=bank.id%></td>
+<td><%=link_to bank.bank_name,bank_path(bank.id), id:'show'%></td>
+<td><%=bank.branch_address%></td>
+<td>
+     <%=link_to image_tag("/assets/edit_icon_4.png", border: 0,size:"20x20",class:"back-icon"),edit_bank_path(bank.id)%>
+
+      <%=link_to image_tag("/assets/delete_icon.png", border: 0,size:"20x20",class:"back-icon"),bank_path(bank.id), :method => :delete %>
+</td>
+</tr>
+<%end%>
+
+</table>
+</div>

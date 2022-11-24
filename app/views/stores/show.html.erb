@@ -1,25 +1,199 @@
+<div class="container">
+<%= link_to "Edit", edit_store_path%>
 
-<div><%=@store.store_name %></div>
-<div><%= @store.store_address %></div>
-<div><%= @store.store_phone_number%></div>
-<div><%= @store.owner_name%></div>
-<div><%= @store.store_owner_phone_number%></div>
-<div><%= @store.email%></div>
-<div><%= @store.gst_no%></div>
-<div><%= @store.pan_no%></div>
-<div><%= @store.pan_card%></div>
-<div><%= @store.trade_licence%></div>    
+     <div class="col-lg-12">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Store Name</p>
+              </div>
+              <div class="col-sm-3">
+                <p class="text-muted mb-0"><%=@store.store_name %></p>
+              </div>
+              <div class="col-sm-3">
+                <p class="mb-0">Store Address</p>
+              </div>
+              <div class="col-sm-3">
+              <p class="text-muted mb-0"><%= @store.store_address %></p>
+            </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Store Phone Number</p>
+              </div>
+              <div class="col-sm-3">
+                <p class="text-muted mb-0"><%= @store.store_phone_number%></p>
+              </div>
+              <div class="col-sm-3">
+                <p class="mb-0">Email</p>
+              </div>
+              <div class="col-sm-3">
+                <p class="text-muted mb-0"><%= @store.email%></p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0"> Owner Name</p>
+              </div>
+              <div class="col-sm-3">
+                <p class="text-muted mb-0"><%= @store.owner_name%></p>
+              </div>
+              <div class="col-sm-3">
+                <p class="mb-0">Store Owner Phone Number</p>
+              </div>
+              <div class="col-sm-3">
+                <p class="text-muted mb-0"><%= @store.store_owner_phone_number%></p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">GST No</p>
+              </div>
+              <div class="col-sm-3">
+                <p class="text-muted mb-0"><%= @store.gst_no%></p>
+              </div>
+              <div class="col-sm-3">
+                <p class="mb-0">GST Certificate</p>
+              </div>
+              <div class="col-sm-3">
+                <p class="text-muted mb-0"><%= @store.gst_certificate%></p>
+              </div>
+              
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Pan No</p>
+              </div>
+              <div class="col-sm-3">
+                <p class="text-muted mb-0"><%= @store.pan_no%></p>
+              </div>
+              <div class="col-sm-3">
+                <p class="mb-0">Uploaded Pan Card</p>
+              </div>
+              <div class="col-sm-3">
+                <p class="text-muted mb-0"><%=link_to "Pan Card", url_for(@store.pan_card), target: '_blank'%></p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Trade License</p>
+              </div>
+              <div class="col-sm-3">
+                <p class="text-muted mb-0"><%= @store.trade_license%></p>
+              </div>
+              <div class="col-sm-3">
+                <p class="mb-0">Uploaded Trade License</p>
+              </div>
+              <div class="col-sm-3">
+                <p class="text-muted mb-0"><%= @store.trade_license_certificate%></p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Choosed Bank</p>
+              </div>
+              <div class="col-sm-3">
+                <p class="text-muted mb-0"><%= Bank.find(@store.bank_id).bank_name%></p>
+              </div>
+              <div class="col-sm-3">
+                <p class="mb-0">Uploaded Store Acquisition Form</p>
+              </div>
+              <div class="col-sm-3">
+                <p class="text-muted mb-0"><%= @store.store_acquisition_form%></p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Dealer Name </p>
+              </div>
+              <div class="col-sm-3">
+                <p class="text-muted mb-0"><%= @store.dealer_name%></p>
+              </div>
+              <div class="col-sm-3">
+                <p class="mb-0">Dealer Sales Person</p>
+              </div>
+              <div class="col-sm-3">
+                <p class="text-muted mb-0"><%= @store.dealer_sales_person%></p>
+
+              </div>
+            </div>
+            <hr>
+            
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Bank Name </p>
+              </div>
+              <div class="col-sm-3">
+                <p class="text-muted mb-0"><%= @store.bank_name%></p>
+              </div>
+              <div class="col-sm-3">
+                <p class="mb-0">Bank Branch address </p>
+              </div>
+              <div class="col-sm-3">
+                <p class="text-muted mb-0"><%= @store.bank_branch_address%></p>
+                
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0">Account No </p>
+              </div>
+              <div class="col-sm-3">
+                <p class="text-muted mb-0"><%= @store.account_no%></p>
+              </div>
+              <div class="col-sm-3">
+                <p class="mb-0">IFSC Code </p>
+              </div>
+              <div class="col-sm-3">
+                <p class="text-muted mb-0"><%= @store.ifsc_code%></p>
+                
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0"> </p>
+              </div>
+              <div class="col-sm-3">
+                <p class="text-muted mb-0"></p>
+              </div>
+              <div class="col-sm-3">
+                <p class="mb-0">Uploading Of Cancelled Cheque</p>
+              </div>
+              <div class="col-sm-3">
+                <p class="text-muted mb-0"><%= @store.uploading_of_cancelled_cheque%></p>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+</div>  
 
 
-<div>
+<div class="container">
 <h2>Store Mdr</h2>
-<table>
+
+
+<table class="table table-bordered">
   <tr class="header">
     <th scope="col" class="col">Payment Mode</th>
     <th scope="col" class="col">Rate Amount</th>
     <th scope="col" class="col">Rate Type</th>
     <th scope="col"class="col">UpTo Amount</th>
     <th scope="col" class="col">From Amount</th>  
+    <th scope="col" class="col">Action</th>  
   </tr>
   <% @store_mdrs.each do |store_mdr| %>
       <tr>
@@ -29,14 +203,46 @@
         <td scope="row"><%=store_mdr.rate_type%></td>
         <td scope="row"><%=store_mdr.upto_amount%></td>
         <td scope="row"><%=store_mdr.from_amount%></td>
+        <td scope="row"><%= link_to "Edit", edit_store_store_mdr_path(@store.id,store_mdr.id)%></td>
+        
+        
+      </tr>
+  <%end%>
+</table>
+</div>
+<div class="container">
+<h2>Bank Mdr</h2>
+
+
+<table class="table table-bordered">
+  <tr class="header">
+    <th scope="col" class="col">Payment Mode</th>
+    <th scope="col" class="col">Rate Amount</th>
+    <th scope="col" class="col">Rate Type</th>
+    <th scope="col"class="col">UpTo Amount</th>
+    <th scope="col" class="col">From Amount</th>  
+    <th scope="col" class="col">Action</th>  
+  </tr>
+  <% @bank_mdrs.each do |bank_mdr| %>
+      <tr>
+        
+        <td scope="row"><%=bank_mdr.payment_mode%></td>
+        <td scope="row"><%=bank_mdr.rate_amount%></td>
+        <td scope="row"><%=bank_mdr.rate_type%></td>
+        <td scope="row"><%=bank_mdr.upto_amount%></td>
+        <td scope="row"><%=bank_mdr.from_amount%></td>
+        <td scope="row"><%= link_to "Edit", edit_bank_bank_mdr_path(bank_mdr.bank_id,bank_mdr.id)%></td>
+        
+        
       </tr>
   <%end%>
 </table>
 </div>
 
-<div>
+<div class="container">
 <h2>Store TID & DSN</h2>
-<table>
+
+<table class="table table-bordered">
 <tr>
 <th>TID</th>
 <th>DSN</th>
@@ -45,11 +251,16 @@
 </tr>
   <% @terminals.each do |terminal| %>
     <tr>
-    <td ><%=terminal.tid%></td>
-    <td><%=terminal.device_id%></td>
+    <td ><%=Terminal.find_by_id(terminal.terminal_id).tid%></td>
+    <td><%=Device.find_by_id(terminal.device_id).serial_no%></td>
     <td><%=terminal.remarks%></td>
     <td><%=terminal.status%></td>
+    <td><%= link_to "Edit", edit_terminal_path(@store.id,terminal.id)%>
+    <td><%= link_to "Delete", terminal_path(@store.id,terminal.id), :method => :delete %>
+    </td>
     </tr>
   <%end%>
 </table>
 </div>
+
+  

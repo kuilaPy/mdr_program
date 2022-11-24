@@ -1,0 +1,15 @@
+<h4>Configure Store MDRs</h4>
+<%=link_to "Configure Store terminal", terminals_path%>
+<div class="div">  <h3>Edit Store MDR</h3>
+  <hr>
+  
+    <%=form_for(@store_mdr,:url=> store_store_mdr_path) do |f|%>
+        <%= f.select :payment_mode, ["Credit Card ", "Debit Card", "Rupay Card","UPI","Commercial / International Card","Amex Card","Any other","Rent"]  %>
+        <%= f.text_field :rate_amount , placeholder: "Rate Amount" %>
+        <%= f.select :rate_type, ["Persentage ", "Fixed"]  %>
+        <%= f.text_field :upto_amount, placeholder: "UpTo Amount"%>
+        <%= f.text_field :from_amount , placeholder: "From Amount"%>
+        <%= f.submit %>
+    <% end %>
+
+ </div>

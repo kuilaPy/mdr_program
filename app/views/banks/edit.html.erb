@@ -1,0 +1,7 @@
+<h1>Banks#edit</h1>
+<p>Find me in app/views/banks/edit.html.erb</p>
+<%=form_for(@bank,:url=>bank_path) do |f|%>
+    <%= f.text_field :bank_name , placeholder: "Bank Name" %>
+    <%= f.text_field :branch_address, placeholder: "Branch Address"%>
+    <%= f.submit %>
+<% end %>

@@ -4,6 +4,8 @@ class CreateBanks < ActiveRecord::Migration[5.2]
   def change
     create_table :banks do |t|
       t.string  :bank_name
+      t.integer :account_no
+      t.string  :ifsc_code
       t.string  :branch_address
 
       t.timestamps

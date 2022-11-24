@@ -1,39 +1,46 @@
 class TerminalsController < ApplicationController
-  before_action :set_store
+  layout 'store'
   def index
-    @terminals=@store.terminals
+    @terminal = Terminal.new
+    @terminals =Terminal.all
     
-    @terminal=@store.terminals.new
   end
 
   def create
-    @terminal=@store.terminals.new(terminal_params)
+    @terminal = Terminal.new(terminal_params)
     if @terminal.save
-      redirect_to(store_terminals_path)
-
+      flash[:notice] = 'Terminal created successfully'
+      redirect_to(terminals_path)
     else
-      puts @terminal.errors.messages
       render('index')
     end
   end
 
-  def show
-  end
-
   def edit
+    @terminal = Terminal.find(params[:id])
   end
 
-  def delete
+  def update
+    @terminal = Terminal.find(params[:id])
+
+    if @terminal.update_attributes(terminal_params)
+      flash[:notice] = "terminal '#{@terminal.tid}' updated successfully"
+      redirect_to(terminals_path)
+    else
+      render('edit')
+    end
   end
 
-  private  
-
-  def set_store
-    @store = Store.find_by_id(params[:store_id])
+  def destroy
+    @terminal = Terminal.find(params[:id])
+    @terminal.destroy
+    flash[:notice] = "terminal'#{@terminal.tid}' deleted successfully"
+    redirect_to(terminals_path)
   end
-  
+
+  private
+
   def terminal_params
-    params.require(:terminal).permit(:tid, :device_id, :remarks, :status,  :store_id)
+    params.require(:terminal).permit(:tid, :remarks, :status)
   end
-  
 end

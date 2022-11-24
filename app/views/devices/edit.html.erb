@@ -1,0 +1,6 @@
+<%=form_for(@device,:url=>device_path) do |f|%>
+    <%= f.text_field :serial_no , placeholder: "Device Serial No" %>
+    <%= f.text_field :remarks, placeholder: "Remarks"%>
+    <%= f.select :status, ["Active ", "Inactive"]  %>
+    <%= f.submit %>
+<% end %>

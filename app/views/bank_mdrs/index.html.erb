@@ -1,0 +1,46 @@
+<p class="heading_1">BankMdrs</p>
+
+<div class="container">
+ 
+<div class="row">
+<h3 style="text-align: center;">Add New MDR</h3>
+<%=form_for(@bank_mdr,:url=> bank_bank_mdrs_path,:method => 'post') do |f|%>
+<table style="width:100%">
+<tr>
+  <td><%= f.select :payment_mode, ["Credit Card ", "Debit Card", "Rupay Card","UPI","Commercial / International Card","Amex Card","Any other","Rent"]  %></td>
+  <td><%= f.text_field :rate_amount , step: :"0.01" ,placeholder: "Rate Amount" %></td>
+  <td> <%= f.select :rate_type, ["Percentage ", "Fixed"]  %></td>
+  <td><%= f.text_field :upto_amount, placeholder: "UpTo Amount"%></td>
+  <td><%= f.text_field :from_amount , placeholder: "From Amount"%></td>
+  <td> <%= f.submit %></td>
+</tr>
+</table>
+  
+<% end %>
+</div>
+<hr>
+</div>
+<div class= "container">
+<table class="table table-bordered">
+<tr>
+   <th scope="col">Payment Mode </th>
+   <th scope="col">Rate Amount</th>
+   <th scope="col">Rate Type</th>
+   <th scope="col">Upto Amount</th>
+   <th scope="col">From Amount</th>  
+</tr>
+<% @bank_mdrs.each do |bank_mdr| %>
+<tr>
+<td ><%=bank_mdr.payment_mode%></td> 
+<td><%=bank_mdr.rate_amount%></td>
+<td><%=bank_mdr.rate_type%></td>
+<td><%=bank_mdr.upto_amount%></td>
+<td><%=bank_mdr.from_amount%></td>
+
+</tr>
+<%end%>
+
+</table>
+<%= link_to "Back", banks_path ,class:""%>
+<%= link_to "Finish", banks_path ,class:"next_btn"%>
+</div>
