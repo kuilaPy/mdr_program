@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class StoreMdrsController < ApplicationController
-  layout 'store'
   before_action :set_store
   def index
     @store_mdr = @store.store_mdrs.new

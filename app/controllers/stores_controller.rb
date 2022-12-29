@@ -1,7 +1,5 @@
 # frozen_string_literal: true
-
 class StoresController < ApplicationController
-  layout 'store'
   def index
     @stores = Store.all
   end
@@ -24,9 +22,8 @@ class StoresController < ApplicationController
     @store = Store.find(params[:id])
     @store_mdrs = @store.store_mdrs
     @terminals = @store.store_terminals
-    @bank_id =@store.bank_id
-    @bank_mdrs =BankMdr.where(:bank_id => @bank_id)
-     puts  @terminals.inspect
+    @bank_id = @store.bank_id
+    @bank_mdrs = BankMdr.where(bank_id: @bank_id)
   end
 
   def edit
@@ -54,6 +51,7 @@ class StoresController < ApplicationController
   private
 
   def store_params
-    params.require(:store).permit(:store_name, :store_address, :store_phone_number, :owner_name, :store_owner_phone_number,:email, :gst_no, :gst_certificate, :pan_no, :pan_card, :trade_licenSe,:trade_license, :dealer_sales_person, :bank_branch_address, :bank_name, :account_no, :ifsc_code,:uploading_of_cancelled_cheque, :dealer_name, :store_acquisition_form,:dealer_sales_person, :bank_id)
+    params.require(:store).permit(:store_name, :store_address, :store_phone_number, :owner_name,
+                                  :store_owner_phone_number, :email, :gst_no, :gst_certificate, :pan_no, :pan_card, :trade_licenSe, :trade_license, :dealer_sales_person, :bank_branch_address, :bank_name, :account_no, :ifsc_code, :uploading_of_cancelled_cheque, :dealer_name, :store_acquisition_form, :dealer_sales_person, :bank_id)
   end
 end

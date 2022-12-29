@@ -1,12 +1,10 @@
 # frozen_string_literal: true
+
 class StoreTerminalsController < ApplicationController
-  layout 'store'
   before_action :set_store
   def index
     @store_terminal = @store.store_terminals.new
     @store_terminals = @store.store_terminals
-    
-   
   end
 
   def create

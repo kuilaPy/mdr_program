@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
 class BanksController < ApplicationController
-  layout 'store'
+
   def index
     @bank = Bank.new
     @banks = Bank.all
-    
   end
 
   def new
@@ -14,7 +13,7 @@ class BanksController < ApplicationController
 
   def show
     @bank = Bank.find(params[:id])
-    @bank_mdrs =@bank.bank_mdrs
+    @bank_mdrs = @bank.bank_mdrs
   end
 
   def create

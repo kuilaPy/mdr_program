@@ -4,7 +4,8 @@
 <%=form_for(@store,:url=>store_path) do |f|%>
 <%=render(:partial =>'form',:locals=>{:f=>f})%>
 
-<%= f.submit "update Store",class:"btn button", type:"submit" %>
+<%= f.submit "update Store",class:"btn button", type:"submit", id:"update_btn" %>
 <%end%>
-<%= link_to "back", store_path%>
+
+<a class="btn btn-primary" href="/stores" role="button">Back</a>
 </div>

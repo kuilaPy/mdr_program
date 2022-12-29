@@ -1,4 +1,6 @@
+# frozen_string_literal: true
+
 class Terminal < ApplicationRecord
-    has_one  :store_terminal, dependent: :destroy
-    validates :tid, uniqueness: true
+  has_one :store_terminal, dependent: :destroy
+  validates :tid, uniqueness: true
 end

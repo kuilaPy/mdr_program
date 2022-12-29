@@ -1,14 +1,12 @@
 # frozen_string_literal: true
 
 class BankMdrsController < ApplicationController
-  layout 'store'
+  
   before_action :set_bank
   def index
     @bank_mdr = @bank.bank_mdrs.new
     @bank_mdrs = @bank.bank_mdrs
   end
-
- 
 
   def create
     @bank_mdr = @bank.bank_mdrs.new(bank_mdr_params)

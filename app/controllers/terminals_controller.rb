@@ -1,9 +1,8 @@
+# frozen_string_literal: true
 class TerminalsController < ApplicationController
-  layout 'store'
   def index
     @terminal = Terminal.new
-    @terminals =Terminal.all
-    
+    @terminals = Terminal.all
   end
 
   def create

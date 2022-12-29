@@ -17,12 +17,4 @@
  *= require stores_style
  *= require_self
  */
-/* 
- .nav{
-    background-color: #53c4d1;
-    padding: 1%;
-    border:darkgray 5px;
-} */
-.log_out{
-    float: right;
-}
+

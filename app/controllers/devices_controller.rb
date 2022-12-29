@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class DevicesController < ApplicationController
-  layout 'store'
   def index
     @devices = Device.all
     @device = Device.new
